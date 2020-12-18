@@ -1,6 +1,9 @@
 import galeryItems from './galery-items.js'
-const gallery = document.querySelector('.gallery');
 
+const refs = {
+    gallery: document.querySelector('.gallery'),
+    modal: document.querySelector('.lightbox')
+}
 
 function getImage(arr) {
     const list = 
@@ -17,8 +20,18 @@ function getImage(arr) {
     return list;
 }
 
-gallery.insertAdjacentHTML('beforeend', getImage(galeryItems));
+refs.gallery.insertAdjacentHTML('beforeend', getImage(galeryItems));
+refs.gallery.addEventListener('click', oneTagsClick);
+function oneTagsClick(event) {
+    event.preventDefault();
+    if (event.target.nodeName !== 'IMG') {
+        return
+    }
+    showModal();
+    console.log(event.target.dataset.source);
+}
 
-
-
+function showModal() {
+    refs.modal.classList.add('is-open');
+}
 
