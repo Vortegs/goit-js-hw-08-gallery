@@ -28,7 +28,7 @@ function oneTagsClick(event) {
         return
     }
     showModal();
-    console.log(event.target.dataset.source);
+    // console.log(event.target.dataset.source);
 }
 
 function showModal() {
