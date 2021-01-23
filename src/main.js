@@ -51,4 +51,6 @@ function showModal() {
 
 function closeModal() {
     refs.modal.classList.remove('is-open');
+    refs.lightBoxImage.src = '';
+
 }
