@@ -115,7 +115,7 @@ body {
 .lightbox__button {
   position: absolute;
   top: 8px;
-  right: 8px;
+  right: 40px;
   display: flex;
   align-items: center;
   justify-content: center;

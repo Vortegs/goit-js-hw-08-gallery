@@ -2,7 +2,10 @@ import galeryItems from './galery-items.js'
 
 const refs = {
     gallery: document.querySelector('.gallery'),
-    modal: document.querySelector('.lightbox')
+    modal: document.querySelector('.lightbox'),
+    lightBox: document.querySelector('.lightbox__content'),
+    lightBoxImage: document.querySelector('.lightbox__image'),
+    closeButton: document.querySelector('.lightbox__button'),
 }
 
 function getImage(arr) {
@@ -22,16 +25,30 @@ function getImage(arr) {
 
 refs.gallery.insertAdjacentHTML('beforeend', getImage(galeryItems));
 refs.gallery.addEventListener('click', oneTagsClick);
+
 function oneTagsClick(event) {
     event.preventDefault();
     if (event.target.nodeName !== 'IMG') {
         return
     }
     showModal();
-    // console.log(event.target.dataset.source);
+
+    const largeImage = event.target.dataset.source;
+
+    getLargeImage(largeImage);
+
+}
+
+refs.closeButton.addEventListener('click', closeModal)
+
+function getLargeImage(url) {
+    refs.lightBoxImage.src = url;
 }
 
 function showModal() {
     refs.modal.classList.add('is-open');
 }
 
+function closeModal() {
+    refs.modal.classList.remove('is-open');
+}
